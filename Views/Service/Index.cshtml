@@ -24,7 +24,7 @@
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch @(srv.Id!=Model.Services[0].Id?"mt-4 mt-md-0":"")">
                         <div class="icon-box">
                             <div class="icon"><i class="@srv.Icon"></i></div>
-                            <h4><a href="./service/detail/@srv.Id">@srv.Tittle</a></h4>
+                            <h4><a asp-controller="service" asp-action="detail" asp-route-id="@srv.Id">@srv.Tittle</a></h4>
                             <p>@srv.Desc</p>
                         </div>
                     </div>

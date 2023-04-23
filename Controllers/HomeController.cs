@@ -2,6 +2,7 @@
 using EternaHomeWork.Models;
 using EternaHomeWork.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -13,20 +14,23 @@ namespace EternaHomeWork.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+       
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly DataContext _context;
+        public HomeController(DataContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public ViewResult Index()
         {
             HomeViewModel vm = new HomeViewModel
             {
-                Features = Data.Features,
-                Services=Data.Services
+                Features = _context.Features.ToList(),
+                Services= _context.Services.ToList(),
+                Sliders = _context.Sliders.ToList()
             };
+
             return View(vm);
         }
 

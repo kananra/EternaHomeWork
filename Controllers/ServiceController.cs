@@ -2,30 +2,34 @@
 using EternaHomeWork.Models;
 using EternaHomeWork.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EternaHomeWork.Controllers
 {
     public class ServiceController : Controller
     {
-        public ViewResult Index()
+
+        private readonly DataContext _context;
+        public ServiceController(DataContext context)
         {
-            HomeViewModel vm = new HomeViewModel
-            {
-                Services = Data.Services
-            };
-            return View(vm);
+            _context = context;
         }
 
+        public ViewResult Index()
+        {
+            List<Service> services = _context.Services.ToList();
+            return View(services);
+        }
 
         public ViewResult Detail(int id)
         {
-            List<Service> service = Data.Services;
+            //Service service = Data.Services.Find(x => x.Id == id);
+            Service service = _context.Services.Find(id);
 
-            Service serv = service.Find(x => x.Id == id);
-
-
-            return View(serv);
+            return View(service);
         }
+
     }
 }

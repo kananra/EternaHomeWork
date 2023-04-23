@@ -65,9 +65,9 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="active" href="./home">Home</a></li>
-                    <li><a href="./about">About</a></li>
-                    <li><a href="./service">Services</a></li>
+                    <li><a class="active" asp-controller="home" asp-action="index">Home</a></li>
+                    <li><a asp-controller="about" asp-action="index">About</a></li>
+                    <li><a asp-controller="service" asp-action="index">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="team.html">Team</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
@@ -91,7 +91,7 @@
                             <li><a href="#">Drop Down 4</a></li>
                         </ul>
                     </li>
-                    <li><a href="./contact">Contact</a></li>
+                    <li><a asp-controller="contact" asp-action="index">Contact</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
